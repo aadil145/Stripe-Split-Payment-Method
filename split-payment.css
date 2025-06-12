@@ -1,0 +1,429 @@
+.wc-split-payments {
+    margin: 1em 0;
+    padding: 0;
+    background: #fff;
+    border-radius: 8px;
+    /* box-shadow removed as per user request */
+}
+
+.split-payment-checkbox {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.checkbox-container {
+    position: relative;
+    padding-left: -5px;
+    margin-bottom: 0;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 5px;
+    left: -19px;
+    height: 13px;
+    width: 13px;
+    background-color: #fff;
+    border: 2px solid #6c757d;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    border-color: #0d6efd;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 4px;
+    top: 0;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.split-payment-details {
+    background: #fff;
+    padding: 0.75rem; /* Adjusted padding */
+    border-radius: 0 0 8px 8px;
+}
+
+.split-payment-header h4 {
+    margin: 0;
+    color: #2c3338;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.form-row {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #333;
+    font-size: 12px;
+    margin-bottom: 0.5rem;
+}
+
+.amount-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Allow input wrapper to take available space */
+    max-width: 100%; /* Ensure it doesn't exceed container width */
+    /* Existing styles for positioning currency symbol */
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 12px;
+    color: #6c757d;
+    z-index: 3;bottom: 7px;
+}
+
+#second-payment-amount, #first-payment-amount {
+    padding-left: 30px;
+}
+
+.wc-split-input {
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.wc-split-input:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.split-stripe-element {
+    padding: 0.875rem;
+    border: 1px solid #dee2e6;
+    box-shadow: none !important;
+    background: white;
+    min-height: 40px;
+    transition: all 0.2s ease;border-radius: 0;
+}
+
+.split-stripe-element:hover {
+    border-color: #86b7fe;
+}
+
+.split-stripe-element:focus-within {
+    border-color: #86b7fe;
+    
+}
+
+.split-stripe-element.StripeElement--focus {
+    border-color: #86b7fe;
+   
+}
+
+.split-stripe-element.StripeElement--invalid {
+    border-color: #dc3545;
+}
+
+.split-stripe-element.StripeElement--complete {
+    border-color: #198754;
+}
+
+.split-payment-error {
+    display: none;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.split-payment-info {
+    margin-top: 1.5rem !important;
+    padding: 1rem !important;
+    background: #f8f9fa !important;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 6px !important;
+}
+
+.split-payment-info strong {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: #2c3338;
+    font-weight: 600;
+}
+
+.split-payment-amounts {
+    margin-top: 0.75rem;
+}
+
+.amount-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.amount-row:last-child {
+    border-bottom: none;
+}
+
+.amount-row.total {
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 2px solid #dee2e6;
+    font-weight: 600;
+}
+
+/* Artistic styling for Amount for Second Card section */
+.form-row.split-payment-amount {
+    display: flex;
+    flex-direction: column; /* Stack on small screens */
+    align-items: flex-start;
+    gap: 0.75rem; /* Slightly increased gap */
+    padding: 1rem 1.5rem; /* Adjusted padding */
+    background-color: #f9f9f9; /* Subtle background */
+    border: 1px solid #eee; /* Light border */
+    border-radius: 8px; /* Slightly more rounded corners */
+    margin-bottom: 1.5rem; /* Ensure space below the section */
+}
+
+label.checkbox-container{
+    font-weight: normal !important;
+}
+#second-card-expiry{max-width:136px;}
+#second-card-cvc{ max-width:137px;}
+
+    
+@media (min-width: 576px) {
+    .form-row.split-payment-amount {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem; /* Increased gap on larger screens */
+    }
+}
+
+.form-row.split-payment-amount .form-label {
+    margin-bottom: 0;
+    flex-shrink: 0;
+    margin-right: 0; /* Removed right margin to use gap instead */
+    width: 150px; /* Give label a fixed width on larger screens for alignment */
+}
+
+.amount-input-wrapper {
+    flex-grow: 1;
+    max-width: 100%; /* Ensure it takes full width */
+    /* Existing styles for positioning currency symbol */
+}
+
+#second-payment-amount {
+    /* Existing styles, padding adjusted for currency symbol */
+}
+
+.split-payment-help {
+    flex-basis: 100%;
+    text-align: left;
+    margin-top: 0.5rem;
+    font-size: 0.875rem; /* Slightly smaller font for help text */
+    color: #666; /* Darker grey for help text */
+}
+#split-payment-section {
+    border: unset !important;
+}
+.card-label{
+    font-size: 12px !important;
+}
+.payment_methods li, .split-payment-checkbox {
+    border: none !important;
+}
+#enable-split-payment-toggle {
+    color: #39f !important;
+	margin-bottom: 20px;
+    display: block;
+}
+#payment .payment_method_stripe .split-payment-amount{padding: 0 !important;
+    margin: -15px 0 0 0 !important;
+    max-width: 115px;}
+
+ @media (min-width: 576px) {
+     .split-payment-help {
+        flex-basis: auto;
+        text-align: right;
+        margin-top: 0;
+     }
+}
+
+/* Validation states */
+.is-invalid {
+    border-color: #dc3545 !important;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 12 12\' width=\'12\' height=\'12\' fill=\'none\' stroke=\'%23dc3545\'%3e%3ccircle cx=\'6\' cy=\'6\' r=\'4.5\'/%3e%3cpath stroke-linejoin=\'round\' d=\'M5.8 3.6h.4L6 6.5z\'/%3e%3ccircle cx=\'6\' cy=\'8.2\' r=\'.6\' fill=\'%23dc3545\' stroke=\'none\'/%3e%3c/svg%3e');
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.is-valid {
+    border-color: #198754 !important;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 8 8\'%3e%3cpath fill=\'%23198754\' d=\'M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z\'/%3e%3c/svg%3e');
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .split-payment-details {
+        padding: 1rem;
+    }
+    
+    .form-row {
+        margin-bottom: 1rem;
+    }
+    
+    .split-payment-header h4 {
+        font-size: 1em;
+    }
+}
+
+.card-details-row {
+    display: flex;
+    gap: 1.4rem;
+}
+
+.card-details-row .col-6 {
+    padding: 0;
+}
+
+/* Specific padding adjustment for card number element container */
+#second-card-number {
+    padding: 0.875rem !important; /* Restore default padding for Stripe element */
+}
+
+/* Ensure Stripe elements themselves take full width within their containers */
+.split-stripe-element {
+    width: 100%;
+}
+
+/* Adjust padding for expiry and CVC to match card number */
+#second-card-expiry, #second-card-cvc {
+    padding: 0.875rem !important;
+}
+
+/* Ensure form rows within split-payment-details take full width */
+.split-payment-details .form-row {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Adjust padding for the amount form row specifically */
+.form-row.split-payment-amount {
+    padding: 0.75rem 0 !important; /* Adjust padding to match split-payment-details padding */
+    margin-bottom: 1rem; /* Slightly less margin below the amount row */
+    border: none; /* Remove border from amount row */
+    background-color: transparent; /* Remove background from amount row */
+}
+
+@media (min-width: 576px) {
+    .form-row.split-payment-amount {
+        flex-direction: column; /* Stack on larger screens too for consistent narrow layout */
+        align-items: flex-start;
+        gap: 0.5rem; /* Smaller gap on larger screens */
+        padding: 0.75rem 0 !important;
+    }
+     .form-row.split-payment-amount .form-label {
+         width: auto; /* Remove fixed width on larger screens */
+     }
+     .amount-input-wrapper {
+         max-width: 100%; /* Ensure full width */
+     }
+     .split-payment-help {
+         text-align: left; /* Align help text left */
+     }
+}
+
+/* Amount Input Styles */
+#second-payment-amount, #first-payment-amount {
+    /* width: 100%; */
+    padding: 12px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    transition: border-color 150ms ease;
+}
+#second-payment-amount {
+    padding-left: 30px !important;
+    margin-top: 10px !important; border-radius:0 !important;
+}
+#second-payment-amount:focus, #first-payment-amount:focus {
+    border-color: #2271b1;
+    box-shadow: 0 0 0 1px #2271b1;
+    outline: none;
+}
+
+/* First Card Amount Field Styles */
+.form-row:has(#first-payment-amount) {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+}
+
+.form-row:has(#first-payment-amount) .card-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3338;
+}
+
+.form-row:has(#first-payment-amount) .amount-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form-row:has(#first-payment-amount) .currency-symbol {
+    position: absolute;
+    left: 12px;
+    color: #6c757d;
+    z-index: 3;
+}
+.form-row:has(#first-payment-amount) {
+    background: #f8f9fa00 !important;
+    border: 1px solid #e9ecef00 !important;
+    border-radius: 4px !important;
+}
+
+.form-row.split-payment-amount {
+    margin-bottom: -30px !important;
+}
+.split-payment-checkbox.p-3, div#second-card-details {
+    padding: 0 !important;
+}
+.form-row:has(#first-payment-amount) #first-payment-amount {
+    padding-left: 30px;
+}
